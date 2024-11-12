@@ -2,7 +2,9 @@
   <i class="fas fa-bars btn-mobile-menu__icon"></i>
   <i class="far fa-times-circle btn-mobile-close__icon hidden"></i>
 </span>
-<style>
+<header class="panel-cover" style="background-image: url({{ site.baseurl }}{{ site.bkimage }})">
+  <div class="panel-main">
+    <style>
   /* 拖轨图片样式 */
   .trail {
     position: absolute;
@@ -38,9 +40,6 @@
     }, 0);
   });
 </script>
-<header class="panel-cover" style="background-image: url({{ site.baseurl }}{{ site.bkimage }})">
-  <div class="panel-main">
-
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
         <a href="{{ site.baseurl }}/" title="link to home of {{ site.title }}">
