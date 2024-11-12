@@ -34,6 +34,47 @@ robots: noindex
         </div>
       </li>
     {% endfor %}
+    <style>
+  /* 文字样式 */
+  .chino-text {
+    position: absolute;
+    font-size: 8px; /* 文字大小 */
+    color: blue; /* 文字颜色 */
+    pointer-events: none; /* 防止干扰鼠标事件 */
+    opacity: 1;
+    transition: opacity 1s ease-out, transform 1s ease-out; /* 淡出和上移效果 */
+    transform: translateY(0); /* 初始位置 */
+  }
+</style>
+</head>
+<body>
+
+<script>
+  // 鼠标点击事件
+  document.addEventListener('click', (event) => {
+    // 创建文字元素
+    const text = document.createElement('span');
+    text.textContent = '智乃'; // 显示的文字内容
+    text.classList.add('chino-text'); // 添加类名以应用样式
+
+    // 设置文字出现的位置
+    text.style.left = `${event.pageX}px`;
+    text.style.top = `${event.pageY}px`;
+
+    // 将文字元素添加到页面
+    document.body.appendChild(text);
+
+    // 设置动画效果：向上移动并淡出
+    setTimeout(() => {
+      text.style.opacity = '0'; // 渐隐
+      text.style.transform = 'translateY(-20px)'; // 向上移动20像素
+    }, 0);
+
+    // 在1秒后删除文字元素
+    setTimeout(() => text.remove(), 1000);
+  });
+</script>
+
     <!--
     <li class="timeline-inverted">
       <div class="timeline-image">
