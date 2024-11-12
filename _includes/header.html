@@ -11,72 +11,73 @@
   <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
   <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
 </a>
-<style>
-  /* 右下角固定唱片位置及样式 */
-  .record-container {
-    
-    bottom: 20px;
-    right: 20px;
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
+ <style>
+    /* 唱片播放器的独立容器样式 */
+    .record-player-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      z-index: 9999; /* 确保不被其他元素覆盖 */
+      transition: transform 0.3s ease;
+    }
 
-  /* 唱片图片样式 */
-  .record {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* 圆形显示 */
-    transition: box-shadow 0.3s ease;
-    position: relative;
-  }
+    /* 唱片图片的样式 */
+    .record-player {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%; /* 圆形显示 */
+      transition: box-shadow 0.3s ease;
+      position: relative;
+    }
 
-  /* 悬停效果 - 渲染白色阴影 */
-  .record-container:hover .record {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
-  }
+    /* 悬停效果：白色阴影 */
+    .record-player-container:hover .record-player {
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+    }
 
-  /* 旋转动画 */
-  .rotate {
-    animation: spin 3s linear infinite;
-  }
+    /* 旋转动画 */
+    .rotate {
+      animation: spin 3s linear infinite;
+    }
 
-  /* 旋转动画定义 */
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+    /* 旋转动画定义 */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-  /* 光芒划过效果 */
-  .record-container:hover .record::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    transform: skewX(-30deg);
-    filter: blur(3px);
-    animation: shine 1s ease-in-out forwards;
-  }
+    /* 光芒划过效果 */
+    .record-player-container:hover .record-player::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: skewX(-30deg);
+      filter: blur(3px);
+      animation: shine 1s ease-in-out forwards;
+    }
 
-  /* 光芒动画定义 */
-  @keyframes shine {
-    0% { left: -100%; }
-    100% { left: 200%; }
-  }
-</style>
+    /* 光芒动画定义 */
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- 音频播放器 -->
 <audio id="audioPlayer" src="/images/dc.mp3" preload="auto"></audio>
 
-<!-- 唱片图片 -->
-<div class="record-container" onclick="togglePlay()">
-  <img src="/images/changpian.png" alt="Music Record" class="record" id="recordImage">
+<!-- 唱片播放器 -->
+<div class="record-player-container" onclick="togglePlay()">
+  <img src="/images/changpian.png" alt="Music Record" class="record-player" id="recordImage">
 </div>
 
 <script>
