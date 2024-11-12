@@ -90,16 +90,30 @@
             {% endif %}
 
             {% if site.author.github_username %}
-              <!-- GitHub -->
-              <li class="navigation__item">
-                <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
-                  <img src="/images/github.svg" width="20" alt="picture"></img>
-                  <!--<i class="icon icon-social-github"></i>-->
-                  <i class="fa-brands fa-github"></i>
-                  <span class="label">GitHub</span>
-                </a>
-              </li>
-            {% endif %}
+            <!-- GitHub -->
+            <li class="navigation__item">
+              <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
+                <img src="/images/github.svg" width="20" alt="picture">
+                <!--<i class="icon icon-social-github"></i>-->
+                <i class="fa-brands fa-github"></i>
+                <span class="label">GitHub</span>
+              </a>
+            </li>
+          {% endif %}
+          
+          <style>
+            /* 去除链接的边框和背景 */
+            .navigation__item a {
+              border: none; /* 去除链接边框 */
+              background: none; /* 去除链接背景 */
+            }
+          
+            /* 去除 img 元素的边框 */
+            .navigation__item img {
+              border: none; /* 去除图片边框 */
+            }
+          </style>
+
 
 
 
