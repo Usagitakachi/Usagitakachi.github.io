@@ -68,9 +68,10 @@
 
               <!-- https://mastodon.social/@tzuehlke@mstdn.social -->
             {% if site.author.mastodon %}
-              <!-- Mastodon -->
+              <!-- YouTube -->
               <li class="navigation__item">
                 <a href="https://mastodon.social/@{{ site.author.mastodon }}" title="@{{ site.author.mastodon }} on Mastodon" target="_blank">
+                  <img src="/images/youtube.svg" width="35" alt="picture" class="github-icon"></img>
                   <i class="fa-brands fa-mastodon"></i>
                   <span class="label">Mastodon</span>
                 </a>
@@ -112,7 +113,6 @@
                   .navigation__item img.github-icon {
                     border: none; /* 去除图片边框 */
                     margin-top: 10px; /* 向下移动 10px */
-                    margin-left: 10px;
                     filter: brightness(0) invert(1); /* 将黑色转换为白色 */
                   }
                 </style>
