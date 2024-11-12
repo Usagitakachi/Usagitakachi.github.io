@@ -114,7 +114,14 @@
                     border: none; /* 去除图片边框 */
                     transform: translateX(15px);
                     filter: brightness(0) invert(1); /* 将黑色转换为白色 */
-                  }
+                    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑的动画效果 */
+                    }
+                  
+                    /* 悬停效果 */
+                    .github-icon:hover {
+                      transform: translate(10px, -5px) scale(1.1); /* 向上平移并略微放大 */
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
+                    }
                 </style>
 
                   
