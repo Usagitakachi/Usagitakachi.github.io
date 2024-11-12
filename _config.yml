@@ -1,22 +1,21 @@
 # Site settings
-title: Thomas Zühlke
+title: Welcome to RabbitHouse 
 description: 'Business Card Page'
-url: 'https://www.zuehlke.cloud'
+url: 'https://www.usagitakachi.github.io'
 baseurl: ''
-profilepic: '/images/tzuehlke.jpg'
+profilepic: '/images/chino.jpg'
 bkimage: '/images/bk1.jpg'
 google_analytics: UA-XXXXXX-X
 font_awesome: 'XXXXXXXXXX.js'
 
 author:
-  name: 'Thomas Zühlke'
+  name: 'UsagiTakachi's Cafe'
   email: thomas@zuehlke.cloud
   mastodon: tzuehlke@mstdn.social
-  twitter_username: thomzuehlke
+  twitter_username: makurochino
 #  facebook_username: joshgerdes
-  github_username:  tzuehlke
-  linkedin_username:  thomas-zühlke-889182165
-  meetup_name: Azure-Meetup-Rostock-MV
+  github_username:  usagitakachi
+  linkedin_username:  usagi
 
 # Build settings
 destination: _site
