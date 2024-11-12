@@ -16,12 +16,12 @@
 <style>
   /* 图片基础样式 */
   .user-image {
-    transition: transform 1s ease-out; /* 设置平滑过渡效果 */
+    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); /* 使用 cubic-bezier 定义更快到慢的缓动 */
   }
 
   /* 鼠标悬停效果：旋转图片 */
   .user-image:hover {
-    animation: rotate360 1s ease-out; /* 应用旋转动画 */
+    animation: rotate360 1s cubic-bezier(0.25, 1, 0.5, 1); /* 应用自定义的缓动曲线 */
   }
 
   /* 定义旋转动画 */
@@ -34,6 +34,7 @@
     }
   }
 </style>
+
 
         <hr class="panel-cover__divider">
         <p class="panel-cover__description">I love <a href="https://x.com/usagi_anime"><u>GOCHIUSA </u></a>and work as a developer and architect for myself <i class="fas fa-cloud"></i>.</p>
