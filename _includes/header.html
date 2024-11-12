@@ -2,7 +2,42 @@
   <i class="fas fa-bars btn-mobile-menu__icon"></i>
   <i class="far fa-times-circle btn-mobile-close__icon hidden"></i>
 </span>
+<style>
+  /* 拖轨图片样式 */
+  .trail {
+    position: absolute;
+    width: 30px; /* 根据需求调整拖轨图片大小 */
+    height: 30px;
+    pointer-events: none; /* 防止干扰鼠标事件 */
+    opacity: 1;
+    transition: opacity 1s ease-out; /* 设置透明度逐渐消失 */
+  }
+</style>
+</head>
+<body>
 
+<script>
+  // 鼠标移动事件
+  document.addEventListener('mousemove', (event) => {
+    // 创建拖轨元素
+    const trail = document.createElement('img');
+    trail.src = '/img/tuogui.png'; // 拖轨图片路径
+    trail.classList.add('trail'); // 添加类名以应用样式
+
+    // 设置拖轨的位置
+    trail.style.left = `${event.pageX}px`;
+    trail.style.top = `${event.pageY}px`;
+
+    // 将拖轨添加到页面
+    document.body.appendChild(trail);
+
+    // 使用 setTimeout 实现拖轨的淡出和删除
+    setTimeout(() => {
+      trail.style.opacity = '0'; // 逐渐消失
+      setTimeout(() => trail.remove(), 1000); // 完全透明后删除
+    }, 0);
+  });
+</script>
 <header class="panel-cover" style="background-image: url({{ site.baseurl }}{{ site.bkimage }})">
   <div class="panel-main">
 
