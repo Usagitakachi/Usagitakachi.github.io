@@ -89,11 +89,11 @@
                       </li>
                     {% endif %}
         
-                    {% if site.author.github_username %}
+                   {% if site.author.github_username %}
                     <!-- GitHub -->
                     <li class="navigation__item">
                       <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
-                        <img src="/images/github.svg" width="30" alt="picture" class="github-icon">
+                        <img src="/images/github.svg" width="30" alt="picture" id="github-icon">
                         <!--<i class="icon icon-social-github"></i>-->
                         <i class="fa-brands fa-github"></i>
                         <span class="label">GitHub</span>
@@ -102,16 +102,17 @@
                   {% endif %}
                   
                   <style>
-                    /* 仅对 .navigation__item 内的 .github-icon 应用样式 */
-                    .github-icon {
+                    /* 仅对带有 id 为 github-icon 的元素应用样式 */
+                    #github-icon {
                       border: none; /* 去除图片边框 */
-                      margin-top: 15px; /* 向下移动 10px */
-                      /* 或者可以使用以下代码替代 margin-top 的方式：
+                      margin-top: 10px; /* 向下移动 10px */
+                      /* 或者使用以下代码代替 margin-top：
                          position: relative;
                          top: 10px;
                       */
                     }
                   </style>
+
 
 
 
