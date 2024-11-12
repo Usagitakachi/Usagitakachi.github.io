@@ -92,8 +92,25 @@
                    {% if site.author.github_username %}
                     <!-- GitHub -->
                     <li class="navigation__item">
+                      <style>
+                      /* 去除链接的边框和背景 */
+                      .navigation__item a {
+                        border: none; /* 去除链接边框 */
+                        background: none; /* 去除链接背景 */
+                      }
+                    
+                      /* 去除 img 元素的边框并向下移动 */
+                      .navigation__item img {
+                        border: none; /* 去除图片边框 */
+                        margin-top: 10px; /* 使用 margin-top 向下移动 10px */
+                        /* 或者可以使用以下代码代替 margin-top 方式：
+                           position: relative;
+                           top: 10px;
+                        */
+                      }
+                    </style>
                       <a href="https://www.github.com/{{ site.author.github_username }}" title="{{ site.author.github_username }} on GitHub" target="_blank">
-                        <img src="/images/github.svg" width="30" alt="picture" id="github-icon">
+                        <img src="/images/github.svg" width="30" alt="picture">
                         <!--<i class="icon icon-social-github"></i>-->
                         <i class="fa-brands fa-github"></i>
                         <span class="label">GitHub</span>
@@ -101,19 +118,7 @@
                     </li>
                   {% endif %}
                   
-                  <style>
-                    /* 仅对带有 id 为 github-icon 的元素应用样式 */
-                    #github-icon {
-                      border: none; /* 去除图片边框 */
-                      margin-top: 10px; /* 向下移动 10px */
-                      /* 或者使用以下代码代替 margin-top：
-                         position: relative;
-                         top: 10px;
-                      */
-                    }
-                  </style>
-
-
+                  
 
 
 
