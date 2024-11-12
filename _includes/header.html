@@ -9,9 +9,32 @@
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
         <a href="{{ site.baseurl }}/" title="link to home of {{ site.title }}">
-          <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
-          <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
-        </a>
+  <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
+  <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
+</a>
+
+<style>
+  /* 图片基础样式 */
+  .user-image {
+    transition: transform 1s ease-out; /* 设置平滑过渡效果 */
+  }
+
+  /* 鼠标悬停效果：旋转图片 */
+  .user-image:hover {
+    animation: rotate360 1s ease-out; /* 应用旋转动画 */
+  }
+
+  /* 定义旋转动画 */
+  @keyframes rotate360 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
         <hr class="panel-cover__divider">
         <p class="panel-cover__description">I love <a href="https://x.com/usagi_anime"><u>GOCHIUSA </u></a>and work as a developer and architect for myself <i class="fas fa-cloud"></i>.</p>
         <hr class="panel-cover__divider panel-cover__divider--secondary">
