@@ -36,8 +36,30 @@
 
 
         <hr class="panel-cover__divider">
-        <p class="panel-cover__description">I love <a href="https://x.com/usagi_anime"><u>GOCHIUSA </u></a>and work as a developer and architect for myself <i class="fas fa-cloud"></i>.</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary">
+<p class="panel-cover__description fade-in-up">
+  I love <a href="https://x.com/usagi_anime"><u>GOCHIUSA</u></a> and work as a developer and architect for myself <i class="fas fa-cloud"></i>.
+</p>
+<hr class="panel-cover__divider panel-cover__divider--secondary">
+
+<style>
+  /* 定义进入渐显上移的动画 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0; /* 初始透明度 */
+      transform: translateY(20px); /* 初始位置稍微偏下 */
+    }
+    to {
+      opacity: 1; /* 结束透明度 */
+      transform: translateY(0); /* 最终位置为原始位置 */
+    }
+  }
+
+  /* 应用于文字的渐显上移样式 */
+  .fade-in-up {
+    animation: fadeInUp 1s ease-out; /* 1秒渐显上移动画 */
+  }
+</style>
+
 
         <div class="navigation-wrapper">
 
