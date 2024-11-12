@@ -118,24 +118,7 @@
               */
             }
           </style>
-
-
-
-
-
-
-            </ul>
-          </nav>
-          
-          <!--<nav class="cover-navigation cover-navigation--primary">-->
-          <nav class="cover-navigation navigation--social">
-            <ul class="navigation">
-              <li class="navigation__item"><a href="https://twpf.jp/makurochino" title="link to twipf"><i class="fa-solid fa-link"></i>&nbsp;Twitter Profile</a></li>
-              <!--<li class="navigation__item"><a href="{{ site.baseurl }}/#" title="link to Tweets" class="panel-button"><i class="icon icon-social-twitter"></i>&nbsp;Tweets</a></li>-->
-              <li class="navigation__item"><a href="{{ site.baseurl }}/#projects" title="List of Projects" class="panel-button projects-button"><i class="fa-solid fa-file-code"></i>&nbsp;Projects</a></li>
-            </ul>
-          </nav>
-        {% if site.author.twitter_username %}
+      {% if site.author.twitter_username %}
                       <!-- Twitter -->
                       <li class="navigation__item">
                         <a href="https://twitter.com/{{ site.author.twitter_username }}" title="@{{ site.author.twitter_username }} on Twitter" target="_blank">
@@ -160,22 +143,34 @@
                   {% endif %}
                   
                   <style>
-                    /* 去除链接的边框和背景 */
-                    .navigation__item a {
-                      border: none; /* 去除链接边框 */
-                      background: none; /* 去除链接背景 */
-                    }
-                  
-                    /* 仅对 github-icon 类的 img 元素应用样式 */
-                    .github-icon {
+                    /* 仅对 .navigation__item 内的 .github-icon 应用样式 */
+                    .navigation__item img.github-icon {
                       border: none; /* 去除图片边框 */
                       margin-top: 10px; /* 向下移动 10px */
-                      /* 如果不想使用 margin-top，可以改为以下代码：
+                      /* 或者可以使用以下代码替代 margin-top 的方式：
                          position: relative;
                          top: 10px;
                       */
                     }
                   </style>
+
+
+
+
+
+
+            </ul>
+          </nav>
+          
+          <!--<nav class="cover-navigation cover-navigation--primary">-->
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="https://twpf.jp/makurochino" title="link to twipf"><i class="fa-solid fa-link"></i>&nbsp;Twitter Profile</a></li>
+              <!--<li class="navigation__item"><a href="{{ site.baseurl }}/#" title="link to Tweets" class="panel-button"><i class="icon icon-social-twitter"></i>&nbsp;Tweets</a></li>-->
+              <li class="navigation__item"><a href="{{ site.baseurl }}/#projects" title="List of Projects" class="panel-button projects-button"><i class="fa-solid fa-file-code"></i>&nbsp;Projects</a></li>
+            </ul>
+          </nav>
+        
         </div>
 
       </div>
