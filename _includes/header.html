@@ -66,17 +66,7 @@
           <nav class="cover-navigation navigation--social">
             <ul class="navigation">
 
-              <!-- https://mastodon.social/@tzuehlke@mstdn.social -->
-            {% if site.author.mastodon %}
-              <!-- YouTube -->
-              <li class="navigation__item">
-                <a href="https://mastodon.social/@{{ site.author.mastodon }}" title="@{{ site.author.mastodon }} on Mastodon" target="_blank">
-                  <img src="/images/youtube.svg" width="35" alt="picture" class="github-icon"></img>
-                  <i class="fa-brands fa-mastodon"></i>
-                  <span class="label">Mastodon</span>
-                </a>
-              </li>
-            {% endif %}
+            
 
       {% if site.author.twitter_username %}
                       <!-- Twitter -->
@@ -101,6 +91,16 @@
                     </a>
                   </li>
                 {% endif %}
+              {% if site.author.mastodon %}
+              <!-- YouTube -->
+              <li class="navigation__item">
+                <a href="https://youtube.com" title="@usagi on Youtube" target="_blank">
+                  <img src="/images/youtube.svg" width="35" alt="picture" class="github-icon"></img>
+                  <i class="fa-brands fa-mastodon"></i>
+                  <span class="label">Youtube</span>
+                </a>
+              </li>
+            {% endif %}
                 
                 <style>
                   /* 去除链接的边框和背景 */
