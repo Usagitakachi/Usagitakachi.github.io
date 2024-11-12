@@ -51,11 +51,11 @@
 <body>
 
 <!-- 音频播放器（隐藏） -->
-<audio id="audioPlayer" src="/images/dc.mp4" autoplay loop></audio>
+<audio id="audioPlayer" src="/music/dc.mp4" preload="auto"></audio>
 
 <!-- 唱片图片 -->
 <div class="record-container" onclick="togglePlay()">
-  <img src="/image/changpian.png" alt="Music Record" class="record rotate" id="recordImage">
+  <img src="/image/changpian.png" alt="Music Record" class="record" id="recordImage">
 </div>
 
 <script>
@@ -63,13 +63,22 @@
   const audioPlayer = document.getElementById('audioPlayer');
   const recordImage = document.getElementById('recordImage');
 
+  // 自动播放音乐，并开始旋转
+  window.addEventListener('DOMContentLoaded', () => {
+    audioPlayer.play().then(() => {
+      recordImage.classList.add('rotate');
+    }).catch(error => {
+      console.log('自动播放被浏览器阻止：', error);
+    });
+  });
+
   // 切换播放和暂停功能
   function togglePlay() {
     if (audioPlayer.paused) {
-      audioPlayer.play();           // 播放音乐
+      audioPlayer.play();
       recordImage.classList.add('rotate'); // 添加旋转动画
     } else {
-      audioPlayer.pause();          // 暂停音乐
+      audioPlayer.pause();
       recordImage.classList.remove('rotate'); // 停止旋转动画
     }
   }
