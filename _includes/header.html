@@ -2,6 +2,62 @@
   <i class="fas fa-bars btn-mobile-menu__icon"></i>
   <i class="far fa-times-circle btn-mobile-close__icon hidden"></i>
 </span>
+ <style>
+    /* 基本页面样式 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #f0f0f0;
+      overflow: hidden; /* 隐藏溢出的部分 */
+    }
+
+    /* 双开门效果的门 */
+    .door {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background-color: #333; /* 门的颜色 */
+      z-index: 2; /* 确保门在内容前面 */
+      transition: transform 1s ease-out;
+    }
+
+    .left-door {
+      left: 0;
+      transform: translateX(0); /* 初始位置，门关闭 */
+    }
+
+    .right-door {
+      right: 0;
+      transform: translateX(0); /* 初始位置，门关闭 */
+    }
+
+    /* 当页面加载时，打开门 */
+    .open .left-door {
+      transform: translateX(-100%); /* 向左移出屏幕 */
+    }
+
+    .open .right-door {
+      transform: translateX(100%); /* 向右移出屏幕 */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 双开门 -->
+  <div class="left-door door"></div>
+  <div class="right-door door"></div>
+
+  <script>
+    // 页面加载时添加“open”类来触发门的开启动画
+    window.addEventListener('load', () => {
+      document.body.classList.add('open');
+    });
+  </script>
+
+</body>
 <header class="panel-cover" style="background-image: url({{ site.baseurl }}{{ site.bkimage }})">
   <div class="panel-main">
 
