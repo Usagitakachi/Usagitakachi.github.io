@@ -28,18 +28,23 @@
       width: 100px; /* 图片大小 20px */
       height: auto;
       opacity: 0; /* 初始不可见 */
-      transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out; /* 动画效果 */
+      transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out, box-shadow 0.3s ease; /* 添加box-shadow动画 */
     }
 
     /* 鼠标靠近顶部时图片会掉落的样式 */
     .falling-img.show {
       opacity: 1;
-      top: 30px; /* 设置图片的下落位置 */
+      top: 45px; /* 设置图片的下落位置，减少5px */
     }
 
     /* 反弹效果 */
     .falling-img.bounce {
       transform: translateY(-10px); /* 模拟反弹效果 */
+    }
+
+    /* 鼠标悬停时的闪光效果 */
+    .falling-img:hover {
+      box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8); /* 闪光效果 */
     }
   </style>
 </head>
@@ -51,30 +56,47 @@
   <script>
     const fallingImg = document.getElementById('fallingImg');
     let hasFallen = false; // 标记图片是否已经掉落
+    let isHovering = false; // 标记鼠标是否悬停在图片上
 
-    // 监听鼠标位置，检测是否靠近顶部10px
+    // 监听鼠标位置，检测是否靠近顶部30px
     document.addEventListener('mousemove', (event) => {
       // 仅在鼠标接近顶部时触发图片掉落
-      if (event.clientY <= 20 && !hasFallen) { // 如果鼠标靠近页面上方10px并且图片还没掉落
+      if (event.clientY <= 30 && !hasFallen) { // 如果鼠标靠近页面上方30px并且图片还没掉落
         fallingImg.style.left = `${event.clientX - 10}px`; // 设置图片的 X 坐标位置
         fallingImg.classList.add('show'); // 触发图片掉落
         setTimeout(() => {
           fallingImg.classList.add('bounce'); // 落地后反弹效果
         }, 600); // 延迟触发反弹，等图片完全显示后
         hasFallen = true; // 设置标记，防止再次跟随鼠标
-      } else if (event.clientY > 10 && hasFallen) { // 如果鼠标离开顶部，图片已经掉落，则收回
+      } else if (event.clientY > 30 && hasFallen && !isHovering) { // 如果鼠标离开顶部并且不在图片上，图片收回
         fallingImg.classList.remove('show');
         fallingImg.classList.remove('bounce');
         hasFallen = false; // 重置标记
       }
     });
 
-    // 点击图片时执行的动作（可选）
+    // 监听鼠标是否悬停在图片上
+    fallingImg.addEventListener('mouseenter', () => {
+      isHovering = true; // 鼠标进入图片区域
+    });
+
+    fallingImg.addEventListener('mouseleave', () => {
+      isHovering = false; // 鼠标离开图片区域
+      // 如果鼠标离开图片且不在顶部，隐藏图片
+      if (event.clientY > 30) {
+        fallingImg.classList.remove('show');
+        fallingImg.classList.remove('bounce');
+        hasFallen = false; // 重置标记
+      }
+    });
+
+    // 点击图片时打开新标签页
     fallingImg.addEventListener('click', () => {
-      alert('图片被点击了!');
+      window.open('https://gochiusa.com/chara/chino.html', '_blank');
     });
   </script>
 
+</body>
 <style>
   /* 图片基础样式 */
   .user-image {
