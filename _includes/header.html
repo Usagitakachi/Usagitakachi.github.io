@@ -11,6 +11,65 @@
   <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
   <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
 </a>
+       <style>
+    /* 初始样式 */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* 页面高度 */
+      background-color: #f0f0f0;
+      position: relative;
+    }
+
+    /* 图片初始样式 */
+    .falling-img {
+      position: fixed;
+      top: -40px; /* 初始状态在屏幕上方外面 */
+      width: 30px; /* 图片大小 20px */
+      height: auto;
+      opacity: 0; /* 初始不可见 */
+      transition: top 0.6s ease, opacity 0.6s ease; /* 动画效果 */
+    }
+
+    /* 鼠标靠近顶部时图片会掉落的样式 */
+    .falling-img.show {
+      opacity: 1;
+      transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out;
+    }
+
+    /* 反弹效果 */
+    .falling-img.bounce {
+      transform: translateY(-10px); /* 模拟反弹效果 */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 图片元素 -->
+  <img src="/images/chinokw.png" alt="Falling Image" class="falling-img" id="fallingImg">
+
+  <script>
+    const fallingImg = document.getElementById('fallingImg');
+
+    // 监听鼠标位置，检测是否靠近顶部10px
+    document.addEventListener('mousemove', (event) => {
+      if (event.clientY <= 10) { // 如果鼠标靠近页面上方10px
+        fallingImg.style.left = `${event.clientX - 10}px`; // 图片的 X 坐标跟随鼠标位置
+        fallingImg.classList.add('show'); // 触发图片掉落
+        setTimeout(() => {
+          fallingImg.classList.add('bounce'); // 落地后反弹效果
+        }, 600); // 延迟触发反弹，等图片完全显示后
+      } else {
+        fallingImg.classList.remove('show'); // 鼠标离开顶部，隐藏图片
+        fallingImg.classList.remove('bounce'); // 清除反弹效果
+      }
+    });
+
+    // 点击图片时执行的动作（可选）
+    fallingImg.addEventListener('click', () => {
+      alert('图片被点击了!');
+    });
+  </script>
 <style>
   /* 图片基础样式 */
   .user-image {
@@ -184,6 +243,7 @@
     animation: fadeInUp 1s ease-out; /* 1秒渐显上移动画 */
   }
 </style>
+      
 
 
         <div class="navigation-wrapper">
