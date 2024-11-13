@@ -16,7 +16,7 @@
     body {
       margin: 0;
       padding: 0;
-      height: 100vh; /* 页面高度 */
+      height: 100vh;
       background-color: #f0f0f0;
       position: relative;
     }
@@ -28,13 +28,14 @@
       width: 100px; /* 图片大小 20px */
       height: auto;
       opacity: 0; /* 初始不可见 */
-      transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out, box-shadow 0.3s ease; /* 添加box-shadow动画 */
+      transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out; /* 动画效果 */
+      pointer-events: all; /* 使图片可点击 */
     }
 
     /* 鼠标靠近顶部时图片会掉落的样式 */
     .falling-img.show {
       opacity: 1;
-      top: 35px; /* 设置图片的下落位置，减少5px */
+      top: 35px; /* 设置图片的下落位置 */
     }
 
     /* 反弹效果 */
@@ -42,10 +43,26 @@
       transform: translateY(-10px); /* 模拟反弹效果 */
     }
 
-    /* 鼠标悬停时的闪光效果 */
+    /* 光芒划过的闪光效果 */
     .falling-img:hover {
-       /* 闪光效果 */
+      position: relative;
+      animation: flashEffect 0.5s linear; /* 闪光动画 */
     }
+
+    /* 闪光动画，模拟斜向刀光效果 */
+    @keyframes flashEffect {
+      0% {
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.8) 0%, transparent 50%, rgba(255, 255, 255, 0.8) 100%);
+        background-size: 200% 200%;
+        background-position: -100% -100%;
+      }
+      100% {
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.8) 0%, transparent 50%, rgba(255, 255, 255, 0.8) 100%);
+        background-size: 200% 200%;
+        background-position: 100% 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -57,17 +74,18 @@
     const fallingImg = document.getElementById('fallingImg');
     let hasFallen = false; // 标记图片是否已经掉落
     let isHovering = false; // 标记鼠标是否悬停在图片上
-    // 监听鼠标位置，检测是否靠近顶部30px
+
+    // 监听鼠标位置，检测是否靠近顶部10px
     document.addEventListener('mousemove', (event) => {
       // 仅在鼠标接近顶部时触发图片掉落
-      if (event.clientY <= 50 && !hasFallen) { // 如果鼠标靠近页面上方30px并且图片还没掉落
+      if (event.clientY <= 10 && !hasFallen) { // 如果鼠标靠近页面上方10px并且图片还没掉落
         fallingImg.style.left = `${event.clientX - 10}px`; // 设置图片的 X 坐标位置
         fallingImg.classList.add('show'); // 触发图片掉落
         setTimeout(() => {
           fallingImg.classList.add('bounce'); // 落地后反弹效果
         }, 600); // 延迟触发反弹，等图片完全显示后
         hasFallen = true; // 设置标记，防止再次跟随鼠标
-      } else if (event.clientY > 50 && hasFallen && !isHovering) { // 如果鼠标离开顶部并且不在图片上，图片收回
+      } else if (event.clientY > 10 && hasFallen && !isHovering) { // 如果鼠标离开顶部并且不在图片上，图片收回
         fallingImg.classList.remove('show');
         fallingImg.classList.remove('bounce');
         hasFallen = false; // 重置标记
@@ -82,7 +100,7 @@
     fallingImg.addEventListener('mouseleave', () => {
       isHovering = false; // 鼠标离开图片区域
       // 如果鼠标离开图片且不在顶部，隐藏图片
-      if (event.clientY > 30) {
+      if (event.clientY > 10) {
         fallingImg.classList.remove('show');
         fallingImg.classList.remove('bounce');
         hasFallen = false; // 重置标记
