@@ -11,7 +11,54 @@
   <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
   <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
 </a>
+<style>
+    /* 初始样式 */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh; /* 确保页面高度占满整个屏幕 */
+      background-color: #f0f0f0;
+    }
 
+    /* 创建白色方块 */
+    .side-box {
+      position: fixed;
+      top: 0;
+      right: -20px; /* 初始位置在右侧外面 */
+      width: 20px; /* 初始宽度 */
+      height: 100vh; /* 高度为页面的高度 */
+      background-color: white;
+      transition: right 0.5s ease-out, width 0.5s ease-out; /* 快到慢的缓动 */
+      z-index: 9999; /* 确保方块不会被其他元素遮挡 */
+    }
+
+    /* 当鼠标靠近右侧时显示方块 */
+    .side-box.show {
+      right: 0; /* 将方块滑动到右侧 */
+      width: 200px; /* 扩展宽度 */
+    }
+  </style>
+</head>
+<body>
+
+<!-- 白色方块 -->
+<div class="side-box" id="sideBox"></div>
+
+<script>
+  const sideBox = document.getElementById('sideBox');
+
+  // 监听鼠标移动到右侧
+  document.addEventListener('mousemove', (event) => {
+    // 如果鼠标靠近右侧20px以内
+    if (event.clientX > window.innerWidth - 20) {
+      sideBox.classList.add('show'); // 显示并扩展方块
+    } else {
+      sideBox.classList.remove('show'); // 隐藏方块
+    }
+  });
+</script>
+
+</body>
 <style>
   /* 图片基础样式 */
   .user-image {
