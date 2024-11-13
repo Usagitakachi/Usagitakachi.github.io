@@ -61,14 +61,14 @@
     // 监听鼠标位置，检测是否靠近顶部30px
     document.addEventListener('mousemove', (event) => {
       // 仅在鼠标接近顶部时触发图片掉落
-      if (event.clientY <= 30 && !hasFallen) { // 如果鼠标靠近页面上方30px并且图片还没掉落
+      if (event.clientY <= 50 && !hasFallen) { // 如果鼠标靠近页面上方30px并且图片还没掉落
         fallingImg.style.left = `${event.clientX - 10}px`; // 设置图片的 X 坐标位置
         fallingImg.classList.add('show'); // 触发图片掉落
         setTimeout(() => {
           fallingImg.classList.add('bounce'); // 落地后反弹效果
         }, 600); // 延迟触发反弹，等图片完全显示后
         hasFallen = true; // 设置标记，防止再次跟随鼠标
-      } else if (event.clientY > 30 && hasFallen && !isHovering) { // 如果鼠标离开顶部并且不在图片上，图片收回
+      } else if (event.clientY > 50 && hasFallen && !isHovering) { // 如果鼠标离开顶部并且不在图片上，图片收回
         fallingImg.classList.remove('show');
         fallingImg.classList.remove('bounce');
         hasFallen = false; // 重置标记
