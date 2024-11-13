@@ -32,7 +32,7 @@
     }
   }
 </style>
-<style>
+ <style>
     /* 初始样式 */
     body {
       margin: 0;
@@ -50,14 +50,13 @@
       height: 100vh; /* 高度为页面的高度 */
       background-color: white;
       opacity: 0.3; /* 设置不透明度为30% */
-      transition: right 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.8s ease-out; /* 更明显的缓动效果 */
+      transition: right 0.5s ease-out, opacity 0.5s ease-out; /* 快到慢的缓动效果 */
       z-index: 9999; /* 确保方块不会被其他元素遮挡 */
     }
 
     /* 当鼠标靠近右侧时显示方块 */
     .side-box.show {
-      right: 0; /* 将方块滑动到右侧 */
-      width: 200px; /* 扩展宽度 */
+      right: 0; /* 将方块滑动到右侧，滑动5px */
       opacity: 0.3; /* 保持不透明度 */
     }
   </style>
@@ -74,7 +73,7 @@
   document.addEventListener('mousemove', (event) => {
     // 如果鼠标靠近右侧5px以内
     if (event.clientX > window.innerWidth - 5) {
-      sideBox.classList.add('show'); // 显示并扩展方块
+      sideBox.classList.add('show'); // 显示并滑动方块
     } else {
       sideBox.classList.remove('show'); // 隐藏方块
     }
@@ -85,7 +84,6 @@
     window.location.href = "https://www.google.com"; // 跳转到 Google
   });
 </script>
-
 </body>
  <style>
     /* 唱片播放器的独立容器样式 */
