@@ -11,7 +11,7 @@
   <img src="{{ site.baseurl }}{{ site.profilepic }}" class="user-image" alt="My Profile Photo">
   <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
 </a>
- <style>
+<style>
     /* 初始样式 */
     body {
       margin: 0;
@@ -24,8 +24,8 @@
     /* 图片初始样式 */
     .falling-img {
       position: fixed;
-      top: -30px; /* 初始状态在屏幕上方外面 */
-      width: 20px; /* 图片大小 20px */
+      top: -110px; /* 初始状态在屏幕上方外面 */
+      width: 100px; /* 图片大小 20px */
       height: auto;
       opacity: 0; /* 初始不可见 */
       transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out; /* 动画效果 */
@@ -50,19 +50,22 @@
 
   <script>
     const fallingImg = document.getElementById('fallingImg');
+    let hasFallen = false; // 标记图片是否已经掉落
 
     // 监听鼠标位置，检测是否靠近顶部10px
     document.addEventListener('mousemove', (event) => {
-      console.log("Mouse Y:", event.clientY); // 调试，查看鼠标Y坐标
-      if (event.clientY <= 20) { // 如果鼠标靠近页面上方10px
-        fallingImg.style.left = `${event.clientX - 10}px`; // 图片的 X 坐标跟随鼠标位置
+      // 仅在鼠标接近顶部时触发图片掉落
+      if (event.clientY <= 10 && !hasFallen) { // 如果鼠标靠近页面上方10px并且图片还没掉落
+        fallingImg.style.left = `${event.clientX - 10}px`; // 设置图片的 X 坐标位置
         fallingImg.classList.add('show'); // 触发图片掉落
         setTimeout(() => {
           fallingImg.classList.add('bounce'); // 落地后反弹效果
         }, 600); // 延迟触发反弹，等图片完全显示后
-      } else {
-        fallingImg.classList.remove('show'); // 鼠标离开顶部，隐藏图片
-        fallingImg.classList.remove('bounce'); // 清除反弹效果
+        hasFallen = true; // 设置标记，防止再次跟随鼠标
+      } else if (event.clientY > 10 && hasFallen) { // 如果鼠标离开顶部，图片已经掉落，则收回
+        fallingImg.classList.remove('show');
+        fallingImg.classList.remove('bounce');
+        hasFallen = false; // 重置标记
       }
     });
 
