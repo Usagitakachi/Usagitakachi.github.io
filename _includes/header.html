@@ -3,6 +3,23 @@
   <i class="far fa-times-circle btn-mobile-close__icon hidden"></i>
 </span>
 <header class="panel-cover" style="background-image: url({{ site.baseurl }}{{ site.bkimage }})">
+  <script>
+  // 获取背景容器
+  const panelCover = document.querySelector('.panel-cover');
+
+  // 监听鼠标移动事件
+  document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX; // 获取鼠标的 X 坐标
+    const mouseY = e.clientY; // 获取鼠标的 Y 坐标
+
+    // 计算背景图的位置
+    const offsetX = (mouseX / window.innerWidth) * 100; // 根据鼠标位置计算水平偏移量
+    const offsetY = (mouseY / window.innerHeight) * 100; // 根据鼠标位置计算垂直偏移量
+
+    // 更新背景位置，使背景根据鼠标的位置变化
+    panel-cover.style.backgroundPosition = `${offsetX}% ${offsetY}%`;
+  });
+</script>
   <div class="panel-main">
 
     <div class="panel-main__inner panel-inverted">
