@@ -32,7 +32,7 @@
     }
   }
 </style>
- <style>
+  <style>
     /* 初始样式 */
     body {
       margin: 0;
@@ -45,19 +45,19 @@
     .side-box {
       position: fixed;
       top: 0;
-      right: -5px; /* 初始位置在右侧外面（5px） */
-      width: 20px; /* 初始宽度 */
+      right: -15px; /* 初始位置在右侧外面（5px） */
+      width: 15px; /* 初始宽度 */
       height: 100vh; /* 高度为页面的高度 */
       background-color: white;
-      opacity: 0.3; /* 设置不透明度为30% */
+      opacity: 0; /* 初始透明度为0，完全不可见 */
       transition: right 0.5s ease-out, opacity 0.5s ease-out; /* 快到慢的缓动效果 */
       z-index: 9999; /* 确保方块不会被其他元素遮挡 */
     }
 
     /* 当鼠标靠近右侧时显示方块 */
     .side-box.show {
-      right: 0; /* 将方块滑动到右侧，滑动5px */
-      opacity: 0.3; /* 保持不透明度 */
+      right: 30; /* 将方块滑动到右侧，滑动5px */
+      opacity: 0.3; /* 设置不透明度为30%，渐显效果 */
     }
   </style>
 </head>
@@ -84,6 +84,7 @@
     window.location.href = "https://www.google.com"; // 跳转到 Google
   });
 </script>
+
 </body>
  <style>
     /* 唱片播放器的独立容器样式 */
