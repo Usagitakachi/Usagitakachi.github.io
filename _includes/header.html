@@ -34,7 +34,7 @@
     /* 鼠标靠近顶部时图片会掉落的样式 */
     .falling-img.show {
       opacity: 1;
-      top: 50px; /* 设置图片的下落位置 */
+      top: 30px; /* 设置图片的下落位置 */
     }
 
     /* 反弹效果 */
@@ -55,7 +55,7 @@
     // 监听鼠标位置，检测是否靠近顶部10px
     document.addEventListener('mousemove', (event) => {
       // 仅在鼠标接近顶部时触发图片掉落
-      if (event.clientY <= 10 && !hasFallen) { // 如果鼠标靠近页面上方10px并且图片还没掉落
+      if (event.clientY <= 20 && !hasFallen) { // 如果鼠标靠近页面上方10px并且图片还没掉落
         fallingImg.style.left = `${event.clientX - 10}px`; // 设置图片的 X 坐标位置
         fallingImg.classList.add('show'); // 触发图片掉落
         setTimeout(() => {
