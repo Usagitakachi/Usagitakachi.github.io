@@ -28,13 +28,13 @@
       width: 20px; /* 图片大小 20px */
       height: auto;
       opacity: 0; /* 初始不可见 */
-      transition: top 0.6s ease, opacity 0.6s ease; /* 动画效果 */
+      transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out; /* 动画效果 */
     }
 
     /* 鼠标靠近顶部时图片会掉落的样式 */
     .falling-img.show {
       opacity: 1;
-      transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out;
+      top: 50px; /* 设置图片的下落位置 */
     }
 
     /* 反弹效果 */
@@ -53,7 +53,8 @@
 
     // 监听鼠标位置，检测是否靠近顶部10px
     document.addEventListener('mousemove', (event) => {
-      if (event.clientY <= 10) { // 如果鼠标靠近页面上方10px
+      console.log("Mouse Y:", event.clientY); // 调试，查看鼠标Y坐标
+      if (event.clientY <= 20) { // 如果鼠标靠近页面上方10px
         fallingImg.style.left = `${event.clientX - 10}px`; // 图片的 X 坐标跟随鼠标位置
         fallingImg.classList.add('show'); // 触发图片掉落
         setTimeout(() => {
@@ -70,6 +71,7 @@
       alert('图片被点击了!');
     });
   </script>
+
 <style>
   /* 图片基础样式 */
   .user-image {
