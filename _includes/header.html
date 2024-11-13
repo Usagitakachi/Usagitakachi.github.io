@@ -12,6 +12,27 @@
   <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
 </a>
 <style>
+  /* 图片基础样式 */
+  .user-image {
+    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); /* 使用 cubic-bezier 定义更快到慢的缓动 */
+  }
+
+  /* 鼠标悬停效果：旋转图片 */
+  .user-image:hover {
+    animation: rotate360 1s cubic-bezier(0.25, 1, 0.5, 1); /* 应用自定义的缓动曲线 */
+  }
+
+  /* 定义旋转动画 */
+  @keyframes rotate360 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+<style>
     /* 初始样式 */
     body {
       margin: 0;
@@ -59,28 +80,6 @@
 </script>
 
 </body>
-<style>
-  /* 图片基础样式 */
-  .user-image {
-    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); /* 使用 cubic-bezier 定义更快到慢的缓动 */
-  }
-
-  /* 鼠标悬停效果：旋转图片 */
-  .user-image:hover {
-    animation: rotate360 1s cubic-bezier(0.25, 1, 0.5, 1); /* 应用自定义的缓动曲线 */
-  }
-
-  /* 定义旋转动画 */
-  @keyframes rotate360 {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-</style>
-
  <style>
     /* 唱片播放器的独立容器样式 */
     .record-player-container {
