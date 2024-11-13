@@ -4,19 +4,17 @@
 </span>
 <header class="panel-cover" style="background-image: url({{ site.baseurl }}{{ site.bkimage }})">
   <script>
-  // 获取背景容器
+  
   const panelCover = document.querySelector('.panel-cover');
 
-  // 监听鼠标移动事件
+  
   document.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX; // 获取鼠标的 X 坐标
-    const mouseY = e.clientY; // 获取鼠标的 Y 坐标
+    const mouseX = e.clientX; 
+    const mouseY = e.clientY; 
 
-    // 计算背景图的位置
-    const offsetX = (mouseX / window.innerWidth) * 100; // 根据鼠标位置计算水平偏移量
-    const offsetY = (mouseY / window.innerHeight) * 100; // 根据鼠标位置计算垂直偏移量
-
-    // 更新背景位置，使背景根据鼠标的位置变化
+    const offsetX = (mouseX / window.innerWidth) * 100; 
+    const offsetY = (mouseY / window.innerHeight) * 100; 
+    
     panelCover.style.backgroundPosition = `${offsetX}% ${offsetY}%`;
   });
 </script>
@@ -29,85 +27,85 @@
   <h1 class="panel-cover__title panel-title">{{ site.title }}</h1>
 </a>
 <style>
-    /* 初始样式 */
+ 
     body {
       margin: 0;
       padding: 0;
-      height: 100vh; /* 页面高度 */
+      height: 100vh; 
       background-color: #f0f0f0;
       position: relative;
     }
 
-    /* 图片初始样式 */
+    
     .falling-img {
       position: fixed;
-      top: -110px; /* 初始状态在屏幕上方外面 */
-      width: 100px; /* 图片大小 20px */
+      top: -110px; 
+      width: 100px; 
       height: auto;
-      opacity: 0; /* 初始不可见 */
+      opacity: 0; 
       transition: top 0.6s ease, opacity 0.6s ease, transform 0.2s ease-out, box-shadow 0.3s ease; /* 添加box-shadow动画 */
     }
 
-    /* 鼠标靠近顶部时图片会掉落的样式 */
+    
     .falling-img.show {
       opacity: 1;
-      top: 35px; /* 设置图片的下落位置 */
+      top: 35px; 
     }
 
-    /* 反弹效果 */
+    
     .falling-img.bounce {
-      transform: translateY(-10px); /* 模拟反弹效果 */
+      transform: translateY(-10px); 
     }
 
-    /* 鼠标悬停时的闪光效果 */
+    
     .falling-img:hover {
-       /* 闪光效果 */
+       
     }
   </style>
 </head>
 <body>
 
-  <!-- 图片元素 -->
+  
   <img src="/images/chinokw.png" alt="Falling Image" class="falling-img" id="fallingImg">
 
   <script>
     const fallingImg = document.getElementById('fallingImg');
-    let hasFallen = false; // 标记图片是否已经掉落
-    let isHovering = false; // 标记鼠标是否悬停在图片上
+    let hasFallen = false; 
+    let isHovering = false; 
 
-    // 监听鼠标位置，检测是否靠近顶部10px
+    
     document.addEventListener('mousemove', (event) => {
-      // 仅在鼠标接近顶部时触发图片掉落
-      if (event.clientY <= 40 && !hasFallen) { // 如果鼠标靠近页面上方10px并且图片还没掉落
-        fallingImg.style.left = `${event.clientX - 10}px`; // 设置图片的 X 坐标位置
-        fallingImg.classList.add('show'); // 触发图片掉落
+      
+      if (event.clientY <= 40 && !hasFallen) { 
+        fallingImg.style.left = `${event.clientX - 10}px`; // 
+        fallingImg.classList.add('show'); 
         setTimeout(() => {
-          fallingImg.classList.add('bounce'); // 落地后反弹效果
-        }, 600); // 延迟触发反弹，等图片完全显示后
-        hasFallen = true; // 设置标记，防止再次跟随鼠标
-      } else if (event.clientY > 40 && hasFallen && !isHovering) { // 如果鼠标离开顶部并且不在图片上，图片收回
+          fallingImg.classList.add('bounce'); 
+        }, 600); 
+        hasFallen = true; // 
+      } else if (event.clientY > 40 && hasFallen && !isHovering) { 
         fallingImg.classList.remove('show');
         fallingImg.classList.remove('bounce');
-        hasFallen = false; // 重置标记
+        hasFallen = false; 
       }
     });
 
-    // 监听鼠标是否悬停在图片上
+   
     fallingImg.addEventListener('mouseenter', () => {
-      isHovering = true; // 鼠标进入图片区域
+      isHovering = true; 
     });
 
     fallingImg.addEventListener('mouseleave', () => {
-      isHovering = false; // 鼠标离开图片区域
-      // 如果鼠标离开图片且不在顶部，隐藏图片
+      isHovering = false; 
+      
       if (event.clientY > 10) {
         fallingImg.classList.remove('show');
         fallingImg.classList.remove('bounce');
-        hasFallen = false; // 重置标记
+        hasFallen = false; 
       }
     });
 
-    // 点击图片时打开新标签页
+    
     fallingImg.addEventListener('click', () => {
       window.open('https://gochiusa.com/chara/chino.html', '_blank');
     });
@@ -115,17 +113,17 @@
 
 </body>
 <style>
-  /* 图片基础样式 */
+ 
   .user-image {
-    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); /* 使用 cubic-bezier 定义更快到慢的缓动 */
+    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); 
   }
 
-  /* 鼠标悬停效果：旋转图片 */
+  
   .user-image:hover {
-    animation: rotate360 1s cubic-bezier(0.25, 1, 0.5, 1); /* 应用自定义的缓动曲线 */
+    animation: rotate360 1s cubic-bezier(0.25, 1, 0.5, 1); 
   }
 
-  /* 定义旋转动画 */
+  
   @keyframes rotate360 {
     from {
       transform: rotate(0deg);
@@ -137,7 +135,7 @@
 </style>
 </body>
  <style>
-    /* 唱片播放器的独立容器样式 */
+    
     .record-player-container {
       position: fixed;
       bottom: 20px;
@@ -145,36 +143,36 @@
       width: 100px;
       height: 100px;
       cursor: pointer;
-      z-index: 9999; /* 确保不被其他元素覆盖 */
+      z-index: 9999; 
       transition: transform 0.3s ease;
     }
 
-    /* 唱片图片的样式 */
+   
     .record-player {
       width: 100%;
       height: 100%;
-      border-radius: 50%; /* 圆形显示 */
+      border-radius: 50%; 
       transition: box-shadow 0.3s ease;
       position: relative;
     }
 
-    /* 悬停效果：白色阴影 */
+    
     .record-player-container:hover .record-player {
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
     }
 
-    /* 旋转动画 */
+  
     .rotate {
       animation: spin 3s linear infinite;
     }
 
-    /* 旋转动画定义 */
+    
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
 
-    /* 光芒划过效果 */
+   
     .record-player-container:hover .record-player::before {
       content: "";
       position: absolute;
@@ -188,7 +186,7 @@
       animation: shine 1s ease-in-out forwards;
     }
 
-    /* 光芒动画定义 */
+    
     @keyframes shine {
       0% { left: -100%; }
       100% { left: 200%; }
@@ -197,10 +195,10 @@
 </head>
 <body>
 
-<!-- 音频播放器 -->
+
 <audio id="audioPlayer" src="/images/dc.mp3" preload="auto"></audio>
 
-<!-- 唱片播放器 -->
+
 <div class="record-player-container" onclick="togglePlay()">
   <img src="/images/changpian.png" alt="Music Record" class="record-player" id="recordImage">
 </div>
@@ -209,22 +207,22 @@
   const audioPlayer = document.getElementById('audioPlayer');
   const recordImage = document.getElementById('recordImage');
 
-  // 播放音乐并旋转唱片
+  
   function playAudio() {
     audioPlayer.play().then(() => {
-      recordImage.classList.add('rotate'); // 添加旋转动画
+      recordImage.classList.add('rotate'); 
     }).catch(error => {
-      console.log('播放被阻止，等待用户交互');
+      console.log('');
     });
   }
 
-  // 暂停音乐并停止旋转唱片
+  
   function pauseAudio() {
     audioPlayer.pause();
-    recordImage.classList.remove('rotate'); // 停止旋转
+    recordImage.classList.remove('rotate'); 
   }
 
-  // 切换播放状态
+ 
   function togglePlay() {
     if (audioPlayer.paused) {
       playAudio();
@@ -233,19 +231,19 @@
     }
   }
 
-  // 音乐播放结束时停止旋转
+  
   audioPlayer.addEventListener('ended', () => {
     recordImage.classList.remove('rotate');
   });
 
-  // 用户首次交互时开始播放音乐
+  
   function startOnUserInteraction() {
     playAudio();
     window.removeEventListener('click', startOnUserInteraction);
     window.removeEventListener('keydown', startOnUserInteraction);
   }
 
-  // 监听空格键控制播放/暂停
+ 
   window.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
       event.preventDefault();
@@ -253,9 +251,9 @@
     }
   });
 
-  // 页面加载时，自动播放尝试并监听首次交互
+ 
   window.addEventListener('DOMContentLoaded', () => {
-    playAudio(); // 尝试自动播放
+    playAudio(); 
     window.addEventListener('click', startOnUserInteraction);
     window.addEventListener('keydown', startOnUserInteraction);
   });
@@ -270,21 +268,21 @@
 <hr class="panel-cover__divider panel-cover__divider--secondary">
 
 <style>
-  /* 定义进入渐显上移的动画 */
+  
   @keyframes fadeInUp {
     from {
-      opacity: 0; /* 初始透明度 */
-      transform: translateY(20px); /* 初始位置稍微偏下 */
+      opacity: 0; 
+      transform: translateY(20px); 
     }
     to {
-      opacity: 1; /* 结束透明度 */
-      transform: translateY(0); /* 最终位置为原始位置 */
+      opacity: 1; 
+      transform: translateY(0); 
     }
   }
 
-  /* 应用于文字的渐显上移样式 */
+  
   .fade-in-up {
-    animation: fadeInUp 1s ease-out; /* 1秒渐显上移动画 */
+    animation: fadeInUp 1s ease-out; 
   }
 </style>
       
@@ -332,24 +330,24 @@
             {% endif %}
                 
                 <style>
-                  /* 去除链接的边框和背景 */
+                  
                   .navigation__item a {
-                    border: none; /* 去除链接边框 */
-                    background: none; /* 去除链接背景 */
+                    border: none; 
+                    background: none;  
                   }
                 
-                  /* 将指定 SVG 图标转换为白色 */
+                  
                   .navigation__item img.github-icon {
-                    border: none; /* 去除图片边框 */
+                    border: none; 
                     transform: translateX(15px);
-                    filter: brightness(0) invert(1); /* 将黑色转换为白色 */
-                    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑的动画效果 */
+                    filter: brightness(0) invert(1); 
+                    transition: transform 0.3s ease, box-shadow 0.3s ease; 
                     }
                   
-                    /* 悬停效果 */
+                  
                     .github-icon:hover {
-                      transform: translate(10px, -5px) scale(1.1); /* 向上平移并略微放大 */
-                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
+                      transform: translate(10px, -5px) scale(1.1); 
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
                     }
                 </style>
 
